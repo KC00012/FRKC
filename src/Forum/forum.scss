@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+#ms {
+   color: white;
+   font-family: "Sen", sans-serif;
+}
+
+#msl {
+   margin-top: 50px;
+   text-align: center;
+   font-size: 3rem;
+   color: white;
+   font-family: "Chakra Petch", sans-serif;
+   font-weight: bolder;
+}
+
+.bts {
+   width: 95%;
+   margin: 50px auto;
+
+}
+
+#post_window {
+   width: 100%;
+   height: 100%;
+   background: rgba(255, 255, 255, 0.49);
+   border-radius: 16px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(16.7px);
+   -webkit-backdrop-filter: blur(16.7px);
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-family: "Sen", sans-serif;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   gap: 20px;
+   border-radius: 0px;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   z-index: 99999;
+   display: none;
+
+   #close_pw {
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 80px;
+      height: 80px;
+      background: rgb(28, 176, 185);
+      background: -moz-linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+      background: -webkit-linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+      background: linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1cb0b9", endColorstr="#788bf0", GradientType=1);
+      color: white;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Sen", sans-serif;
+      border-radius: 50px;
+   }
+
+   input,
+   button,
+   textarea,
+   select,
+   option {
+      font-family: "Sen", sans-serif;
+      width: 50%;
+      padding: 15px;
+      resize: none;
+      border-radius: 50px;
+      border: 1px solid black;
+      background: rgba(255, 255, 255, 0.26);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3.6px);
+      -webkit-backdrop-filter: blur(3.6px);
+      color: black;
+   }
+
+   button {
+      background: rgb(28, 176, 185);
+      background: -moz-linear-gradient(90deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+      background: -webkit-linear-gradient(90deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+      background: linear-gradient(90deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1cb0b9", endColorstr="#788bf0", GradientType=1);
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+   }
+
+   textarea {
+      height: 250px;
+      border-radius: 10px;
+   }
+}
+
+#sorter {
+   width: 95%;
+   margin: 50px auto;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   button {
+      width: 200px;
+      padding: 15px;
+      background-color: white;
+      border: 0;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: "Sen", sans-serif;
+      transition: .3s;
+
+      &:hover {
+         transform: scale(1.02);
+      }
+   }
+}
+
+#no {
+   padding: 10px;
+   width: 200px;
+   background-color: transparent;
+   border: 2px solid white;
+   border-radius: 50px;
+   cursor: pointer;
+   color: white;
+   font-family: "Sen", sans-serif;
+   font-size: 1.1rem;
+
+   option {
+      font-family: "Sen", sans-serif;
+      border: 2px solid white;
+      border-radius: 50px;
+      background-color: white;
+      color: black;
+   }
+}
+
+.forum_container {
+   width: 100%;
+   display: flex;
+   flex-direction: column-reverse;
+
+   .glass {
+      margin-top: 10px;
+      margin-bottom: 0px;
+      width: 300px;
+      float: left;
+      padding: 10px;
+
+      &:hover {
+         transform: scale(1);
+      }
+   }
+
+   div {
+      width: 95%;
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3.6px);
+      -webkit-backdrop-filter: blur(3.6px);
+      margin: 50px auto;
+      padding: 20px;
+      transition: .3s;
+      cursor: pointer;
+
+      &:hover {
+         transform: scale(1.02);
+      }
+
+      hr {
+         border: 1px solid white !important;
+      }
+
+      h1 {
+         font-size: 2rem;
+         color: white;
+         font-family: "Chakra Petch", sans-serif;
+         font-weight: bolder;
+      }
+
+      p {
+         font-family: "Sen", sans-serif;
+         font-size: 1.3rem;
+         color: rgb(235, 235, 235);
+         line-height: 2rem;
+         margin-top: 20px;
+         width: 100%;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+      }
+   }
+
+   img {
+      width: 40px;
+      height: 40px;
+   }
+}

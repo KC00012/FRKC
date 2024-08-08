@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+footer {
+   /* From https://css.glass */
+   /* From https://css.glass */
+   background: rgba(255, 255, 255, 0.26);
+   border-radius: 16px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(3.6px);
+   -webkit-backdrop-filter: blur(3.6px);
+   padding: 20px;
+   width: 95%;
+   margin: 20px auto;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+
+   .logo {
+      font-size: 3rem;
+      color: white;
+      font-family: "Chakra Petch", sans-serif;
+   }
+
+   nav {
+      font-family: "Sen", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+
+      a {
+         text-decoration: none;
+         padding: 15px;
+         color: white;
+
+         &:nth-child(6) {
+            background-color: white;
+            border-radius: 50px;
+            color: black;
+         }
+
+         &:nth-child(7) {
+            background-color: white;
+            border-radius: 50px;
+            color: black;
+         }
+      }
+   }
+}
+
+@media (max-width:1280px) {
+   footer {
+      flex-direction: column;
+   }
+}
+
+@media (max-width:1090px) {
+   footer {
+      nav {
+         flex-direction: column;
+      }
+   }
+}

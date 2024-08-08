@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+#change_acc {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   background-color: #439ecf;
+   position: absolute;
+   top: 0;
+   width: 100%;
+   z-index: 99999999;
+   padding: 20px;
+   display: none;
+
+   #close {
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 80px;
+      height: 80px;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Sen", sans-serif;
+      border-radius: 50px;
+   }
+
+   #desc {
+      width: 50%;
+      resize: none;
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+      border: 0;
+      height: 400px;
+      font-family: "Sen", sans-serif;
+      color: white;
+   }
+
+   #pfp {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+   }
+
+   #new {
+      font-size: 1rem;
+      font-family: "Sen", sans-serif;
+      padding: 20px 100px;
+      width: fit-content;
+      border-radius: 50px !important;
+   }
+
+   .profile_pic {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+   }
+
+   p,
+   label {
+      font-family: "Sen", sans-serif;
+      font-size: 1.3rem;
+      text-align: center;
+      padding: 10px;
+      margin-top: 40px;
+      color: white;
+   }
+
+   label {
+      margin-top: 0;
+   }
+
+   .form_wrapper {
+      width: 50%;
+   }
+
+   form {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      select {
+         padding: 10px;
+         width: 200px;
+         background-color: transparent;
+         border: 2px solid white;
+         border-radius: 50px;
+         cursor: pointer;
+         color: white;
+         font-family: "Sen", sans-serif;
+         font-size: 1.1rem;
+
+         option {
+            font-family: "Sen", sans-serif;
+            border: 2px solid white;
+            border-radius: 50px;
+            background-color: white;
+            color: black;
+         }
+      }
+   }
+
+   button {
+      border-radius: 50px;
+      border: 0;
+      padding: 20px;
+      width: 50%;
+      margin-top: 40px;
+      font-size: 1.3rem;
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      background-color: white;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+      cursor: pointer;
+      font-family: "Sen", sans-serif;
+
+   }
+
+   h1 {
+      font-size: 3rem;
+      color: white;
+      font-family: "Chakra Petch", sans-serif;
+      font-weight: bolder;
+   }
+}
+
+.acc_container {
+   width: 95%;
+   margin: 50px auto;
+   /* From https://css.glass */
+   background: rgba(255, 255, 255, 0.26);
+   border-radius: 16px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(3.6px);
+   -webkit-backdrop-filter: blur(3.6px);
+   padding: 50px;
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+
+   p {
+      font-family: "Sen", sans-serif;
+      font-size: 1.3rem;
+      color: rgb(255, 255, 255);
+
+   }
+
+   h1 {
+      font-size: 3rem;
+      color: white;
+      font-family: "Chakra Petch", sans-serif;
+      font-weight: bolder;
+   }
+
+   #gold_v {
+      background-color: #ffbb00;
+   }
+
+   #dmd_v {
+      animation: glow 1s ease-in-out infinite alternate;
+
+      background-color: rgb(44, 195, 255);
+   }
+
+   span {
+      font-family: "Sen", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: space-between !important;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3.6px);
+      -webkit-backdrop-filter: blur(3.6px);
+      min-width: 400px;
+
+      img {
+         width: 40px;
+         height: 40px;
+      }
+   }
+
+   button {
+      min-width: 400px;
+      font-family: "Sen", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      background-color: white;
+      border: 0;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: .3s;
+
+      &:hover {
+         transform: scale(1.05);
+      }
+   }
+
+
+   .data,
+   .r_data {
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3.6px);
+      -webkit-backdrop-filter: blur(3.6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 48%;
+      padding: 20px;
+      gap: 20px;
+
+      span {
+         color: black;
+      }
+
+      #pfp {
+         width: 100px;
+         height: 100px;
+         border-radius: 100px;
+         box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      }
+
+      p {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 20px;
+
+         img {
+            width: 50px;
+            height: 50px;
+         }
+      }
+   }
+}
+
+@keyframes glow {
+   0% {
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+      transform: scale(1);
+   }
+
+   100% {
+      transform: scale(1.01);
+      box-shadow: 0 0 20px #ff0, 0 0 30px #f0f, 0 0 40px #00f;
+   }
+}
+
+@media (max-width:1250px) {
+   .acc_container {
+      flex-direction: column;
+      gap: 20px;
+
+      .data,
+      .r_data {
+         width: 100%;
+
+      }
+   }
+}
+
+@media (max-width:600px) {
+   .acc_container {
+      padding: 5px;
+
+      .data,
+      .r_data {
+         p {
+            text-wrap: wrap !important;
+         }
+
+         span,
+         button {
+            min-width: 320px;
+
+            width: 95% !important;
+         }
+      }
+   }
+}

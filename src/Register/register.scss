@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.login_container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   margin-top: 50px;
+   margin-bottom: 50px;
+
+   #desc {
+      width: 50%;
+      resize: none;
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+      border: 0;
+      height: 400px;
+      font-family: "Sen", sans-serif;
+      color: white;
+   }
+
+   #pfp {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+   }
+
+   #new {
+      font-size: 1rem;
+      font-family: "Sen", sans-serif;
+      padding: 20px 100px;
+      width: fit-content;
+      border-radius: 50px !important;
+   }
+
+   .profile_pic {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+   }
+
+   p,
+   label {
+      font-family: "Sen", sans-serif;
+      font-size: 1.3rem;
+      text-align: center;
+      padding: 10px;
+      margin-top: 40px;
+      color: white;
+   }
+
+   label {
+      margin-top: 0;
+   }
+
+   form {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 50%;
+
+      select {
+         padding: 10px;
+         width: 200px;
+         background-color: transparent;
+         border: 2px solid white;
+         border-radius: 50px;
+         cursor: pointer;
+         color: white;
+         font-family: "Sen", sans-serif;
+         font-size: 1.1rem;
+
+         option {
+            font-family: "Sen", sans-serif;
+            border: 2px solid white;
+            border-radius: 50px;
+            background-color: white;
+            color: black;
+         }
+      }
+   }
+
+   button {
+      border-radius: 50px;
+      border: 0;
+      padding: 20px;
+      width: 50%;
+      margin-top: 40px;
+      font-size: 1.3rem;
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      background-color: white;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+      cursor: pointer;
+      font-family: "Sen", sans-serif;
+
+   }
+
+   h1 {
+      font-size: 3rem;
+      color: white;
+      font-family: "Chakra Petch", sans-serif;
+      font-weight: bolder;
+   }
+}
+
+@media (max-width:1100px) {
+   .login_container {
+      h1 {
+         text-align: center;
+      }
+
+      p {
+         font-size: 1.04rem;
+      }
+
+      #desc {
+         width: 90%;
+      }
+
+      form {
+         width: 90%;
+
+         label {
+            font-size: 1rem;
+         }
+      }
+
+      button {
+         width: 90%;
+      }
+   }
+
+
+   .profile_pic {
+      width: 90% !important;
+   }
+}
+
+.form_wrapper {
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+}

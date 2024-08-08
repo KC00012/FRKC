@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.button_flex {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   padding: 0 !important;
+}
+
+.container {
+   height: 100vh;
+   background: rgb(28, 176, 185);
+   background: -moz-linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+   background: -webkit-linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+   background: linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1cb0b9", endColorstr="#788bf0", GradientType=1);
+   overflow-x: hidden;
+
+   p {
+      font-family: "Sen", sans-serif;
+      font-size: 1.3rem;
+      color: rgb(235, 235, 235);
+   }
+
+   .about,
+   .games_container {
+      width: 95%;
+      margin: 50px auto;
+      /* From https://css.glass */
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3.6px);
+      -webkit-backdrop-filter: blur(3.6px);
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h1 {
+         font-size: 3rem;
+         color: white;
+         font-family: "Chakra Petch", sans-serif;
+         font-weight: bolder;
+      }
+   }
+
+   .games_container {
+      flex-direction: column;
+
+      .games {
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         flex-direction: row-reverse;
+      }
+
+      .game_list {
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         flex-wrap: wrap;
+
+         div {
+            width: 400px;
+            /* explanation below */
+            height: 100px;
+            margin: 20px auto;
+            /* From https://css.glass */
+            background: rgba(255, 255, 255, 0.34);
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(3.6px);
+            -webkit-backdrop-filter: blur(3.6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+
+            &:nth-child(1) {
+               /* From https://css.glass */
+               background-color: rgb(255, 187, 0);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+               }
+            }
+
+            &:nth-child(2) {
+               /* From https://css.glass */
+               background-color: orange;
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(3) {
+               /* From https://css.glass */
+               background-color: orangered;
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(4) {
+               /* From https://css.glass */
+               background-color: royalblue;
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(5) {
+               /* From https://css.glass */
+               background-color: rgb(73, 223, 243);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(6) {
+               /* From https://css.glass */
+               background-color: rgb(243, 113, 73);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(7) {
+               /* From https://css.glass */
+               background-color: rgb(247, 129, 51);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(8) {
+               /* From https://css.glass */
+               background-color: rgb(4, 165, 4);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(9) {
+               /* From https://css.glass */
+               background-color: rgb(2, 192, 2);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(10) {
+               /* From https://css.glass */
+               background-color: rgb(22, 255, 255);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(11) {
+               /* From https://css.glass */
+               background-color: rgb(253, 93, 93);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(12) {
+               /* From https://css.glass */
+               background-color: rgb(255, 115, 0);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(13) {
+               /* From https://css.glass */
+               background-color: rgb(255, 47, 47);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(14) {
+               /* From https://css.glass */
+               background-color: rgb(255, 102, 0);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(15) {
+               /* From https://css.glass */
+               background-color: rgb(73, 133, 0);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+
+            &:nth-child(16) {
+               /* From https://css.glass */
+               background-color: rgb(255, 196, 0);
+
+               h1 {
+                  width: 100%;
+                  text-align: center;
+                  color: black;
+                  font-size: 2rem;
+                  font-family: "Chakra Petch", sans-serif;
+
+               }
+            }
+         }
+      }
+
+      h1 {
+         text-align: right;
+      }
+   }
+}
+
+.rank_container {
+   width: 95%;
+   margin: auto;
+   background: rgba(255, 255, 255, 0.26);
+   border-radius: 16px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(3.6px);
+   -webkit-backdrop-filter: blur(3.6px);
+   display: flex;
+   flex-direction: column !important;
+
+   .about {
+      width: 100%;
+      box-shadow: none;
+      background: transparent;
+      flex-direction: row-reverse;
+   }
+
+   .about_ranks {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 50px;
+
+      div {
+         width: 45%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         padding: 30px;
+         border-radius: 20px;
+         box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+
+         p {
+            text-align: center;
+            margin-top: 20px;
+            color: black;
+         }
+
+         ul {
+            margin-top: 20px;
+
+            li {
+               margin-top: 20px;
+               font-family: "Sen", sans-serif;
+            }
+         }
+
+         h1 {
+            font-family: "Chakra Petch", sans-serif;
+            font-size: 3rem;
+         }
+
+         &:nth-child(1) {
+            background-color: #ffbb00;
+
+            p {
+               color: black;
+            }
+         }
+
+         &:nth-child(2) {
+            animation: glow 1s ease-in-out infinite alternate;
+
+            background-color: rgb(0, 132, 255);
+         }
+      }
+   }
+
+   #buy {
+      background-color: royalblue;
+      padding: 20px;
+      width: 95%;
+      margin: 20px auto;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 2rem;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+      span {
+         color: rgb(0, 0, 0);
+      }
+   }
+}
+
+@keyframes glow {
+   0% {
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+   }
+
+   100% {
+      box-shadow: 0 0 20px #ff0, 0 0 30px #f0f, 0 0 40px #00f;
+   }
+}
+
+@media (max-width:1150px) {
+   .games_container {
+      .games {
+         flex-direction: column !important;
+         align-items: center !important;
+         justify-content: center !important;
+
+         .about_text {
+            align-items: center !important;
+
+            p {
+               text-align: center;
+            }
+
+            h1 {
+               text-align: center !important;
+
+            }
+         }
+      }
+   }
+
+
+
+   .rank_container {
+      .about_ranks {
+         padding: 10px;
+         flex-direction: column !important;
+         gap: 40px;
+
+         div {
+            width: 100%;
+         }
+      }
+
+      .about {
+         flex-direction: column;
+
+         p {
+            text-align: center !important;
+         }
+
+         text-align: center !important;
+      }
+   }
+
+
+   .about {
+      flex-direction: column;
+      text-align: center;
+   }
+}
+
+@media (max-width:750px) {
+
+   .about {
+      flex-direction: column;
+      text-align: center;
+
+      h1 {
+         font-size: 2.4rem !important;
+      }
+
+   }
+}
+
+@media (max-width:520px) {
+
+   .about {
+      .button_flex {
+         flex-direction: column;
+         gap: 0;
+      }
+
+      img {
+         width: 350px;
+         height: 350px;
+      }
+   }
+}
