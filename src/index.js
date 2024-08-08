@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React from "react";
-import disableReactDevTools from '@fvilers/disable-react-devtools';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import {
   createBrowserRouter,
   RouterProvider,
