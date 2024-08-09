@@ -7,7 +7,7 @@ import user from './user.svg';
 import cal from './cal.svg';
 import './theme.scss';
 import { jwtDecode } from "jwt-decode"; // Adjusted the import as jwtDecode is usually a default export
-import config from '../config.cjs';
+import config from '../config.js';
 const Theme = () => {
    const token = localStorage.getItem("goodgame");
    const isLoggedIn = token && jwtDecode(token).name;

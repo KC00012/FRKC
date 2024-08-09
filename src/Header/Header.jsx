@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <h1 className="logo">KEYCAP</h1>
+        <h1 className="logo" onClick={() => { window.location.href = '/' }}>KEYCAP</h1>
         <nav>
           <Link to="/">POČETNA</Link>
           <Link to="/saigraci">SAIGRAČI</Link>

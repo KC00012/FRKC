@@ -5,7 +5,9 @@ import Footer from "../Footer/Footer";
 import Support from "../Support/Support";
 import { jwtDecode } from "jwt-decode";
 import Button from "../button/Button";
-import config from "../config.cjs";
+import config from "../config.js";
+import Zoom from 'react-reveal/Zoom';
+
 const Players = () => {
   const [players, setPlayers] = useState([]);
   const [filteredPlayers, setFilteredPlayers] = useState([]);
@@ -112,29 +114,31 @@ const Players = () => {
       </form>
       <div className="players">
         {filteredPlayers.map((player, index) => (
-          <div
-            className={`player-card ${player.rank === 'diamond' ? 'diamond' : ''}`}
-            key={index}
-            onClick={() => handlePlayerClick(player._id)}
-          >
-            <aside className="top_part">
-              <aside className="pfp" style={{ backgroundColor: player.color }}></aside>
-              <h2>{player.name}</h2>
-            </aside>
-            <aside className="middle_part">
-              <p style={{ height: "150px", overflow: "hidden" }}>{player.desc}</p>
-            </aside>
-            <aside className="rank">
-              {player.rank !== 'default' && (
-                <p className={`${player.rank === 'diamond' ? 'dmd' : ''} ${player.rank === 'gold' ? 'gold' : ''}`}>
-                  {player.rank.toUpperCase()} RANK
-                </p>
-              )}
-            </aside>
-            <aside className="game">
-              <p>{player.game}</p>
-            </aside>
-          </div>
+          <Zoom>
+            <div
+              className={`player-card ${player.rank === 'diamond' ? 'diamond' : ''}`}
+              key={index}
+              onClick={() => handlePlayerClick(player._id)}
+            >
+              <aside className="top_part">
+                <aside className="pfp" style={{ backgroundColor: player.color }}></aside>
+                <h2>{player.name}</h2>
+              </aside>
+              <aside className="middle_part">
+                <p style={{ height: "150px", overflow: "hidden" }}>{player.desc}</p>
+              </aside>
+              <aside className="rank">
+                {player.rank !== 'default' && (
+                  <p className={`${player.rank === 'diamond' ? 'dmd' : ''} ${player.rank === 'gold' ? 'gold' : ''}`}>
+                    {player.rank.toUpperCase()} RANK
+                  </p>
+                )}
+              </aside>
+              <aside className="game">
+                <p>{player.game}</p>
+              </aside>
+            </div>
+          </Zoom>
         ))}
       </div>
       <Support />

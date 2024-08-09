@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Input from "../Input/Input";
 import Header from "../Header/Header";
 import "./register.scss";
-import config from "../config.cjs";
+import config from "../config.js";
+
 const Register = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +16,7 @@ const Register = () => {
   const [xb, setXb] = useState("");
   const [pfp, setPfp] = useState("#fff");
   const [desc, setDesc] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleNameChange = (e) => setName(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -30,18 +31,36 @@ const Register = () => {
   const handleNewColor = () => {
     const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
     setPfp(randomColor);
+    console.log(config.API_URL);
+  };
+
+  const validateFields = () => {
+    const errors = {};
+    if (!name) errors.name = "Ime je obavezno.";
+    if (!password) {
+      errors.password = "Lozinka je obavezna.";
+    } else if (password.length < 8) {
+      errors.password = "Lozinka mora imati barem 8 karaktera.";
+    }
+    if (!desc) errors.desc = "Opis je obavezan.";
+    if (!pfp) errors.pfp = "Morate odabrati boju za profil.";
+    if (!eng) errors.eng = "Morate odabrati poznavanje engleskog.";
+    if (!s) errors.s = "Morate odabrati igricu koju igrate.";
+    if (!discord && !discord2 && !ig && !ps && !xb) {
+      errors.social = "Morate unijeti barem jedno polje za kontakt.";
+    }
+    return errors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !password || !desc || !pfp || !eng || !s) {
-      setError("All fields except social media are required");
+    const validationErrors = validateFields();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
-    if (!discord && !discord2 && !ig && !ps && !xb) {
-      setError("At least one social media field must be filled out");
-      return;
-    }
+    setErrors({});
+
     fetch(`${config.API_URL}/registracija`, {
       method: "POST",
       body: JSON.stringify({
@@ -81,7 +100,7 @@ const Register = () => {
       <Header />
       <div className="login_container">
         <h1>NAPRAVI NALOG</h1>
-        {error && <p className="error">{error}</p>}
+
         <Input
           type="text"
           placeholder="KEYCAP ime"
@@ -95,7 +114,6 @@ const Register = () => {
           onChange={handlePasswordChange}
         />
         <textarea
-          name=""
           id="desc"
           placeholder="Opiši sebe, koje igre igraš i slično"
           value={desc}
@@ -190,6 +208,13 @@ const Register = () => {
             NOVA BOJA
           </button>
         </div>
+        {Object.keys(errors).length > 0 && (
+          <p className="error">
+            {Object.values(errors).map((error, index) => (
+              <span key={index}>{error}<br /></span>
+            ))}
+          </p>
+        )}
         <button style={{ marginTop: "40px" }} onClick={handleSubmit}>
           NAPRAVI NALOG
         </button>

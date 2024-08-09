@@ -5,7 +5,7 @@ import wrench from "./wrench.webp";
 import Footer from "../Footer/Footer";
 import Support from "../Support/Support";
 import "./sup.scss";
-import config from "../config.cjs";
+import config from "../config.js";
 const Sup = () => {
   const [email, setEmail] = useState("");
   const [ms, setMs] = useState("");
