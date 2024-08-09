@@ -9,7 +9,6 @@ import { jwtDecode } from "jwt-decode";
 import user from "./user.svg"
 import cal from './cal.svg'
 import config from '../config.js';
-import Zoom from 'react-reveal/Zoom';
 
 const Forum = () => {
   const token = localStorage.getItem("goodgame");
@@ -107,24 +106,22 @@ const Forum = () => {
       </div>
       <div className="forum_container">
         {posts.map((post, index) => (
-          <Zoom>
-            <div key={index} onClick={() => navigate(`/forum/${post._id}`)}>
-              <h1>{post.title}</h1>
-              <p>{post.desc}</p>
-              <hr style={{ marginTop: "20px", border: "1px solid royalblue" }} />
-              <div className="glass">
-                <p style={{ marginTop: "20px" }}>
-                  <img src={user} alt="Objavio:" /><b>{post.by}</b>
-                </p>
-                <p style={{ marginTop: "20px" }}>
-                  <img src={cal} alt="Objavljeno:" /><b>{new Date(post.createdAt).toLocaleDateString('sr')}</b>
-                </p>
-                <p style={{ marginTop: "20px" }}>
-                  TEMA: <b>{post.theme}</b>
-                </p>
-              </div>
+          <div key={index} onClick={() => navigate(`/forum/${post._id}`)}>
+            <h1>{post.title}</h1>
+            <p>{post.desc}</p>
+            <hr style={{ marginTop: "20px", border: "1px solid royalblue" }} />
+            <div className="glass">
+              <p style={{ marginTop: "20px" }}>
+                <img src={user} alt="Objavio:" /><b>{post.by}</b>
+              </p>
+              <p style={{ marginTop: "20px" }}>
+                <img src={cal} alt="Objavljeno:" /><b>{new Date(post.createdAt).toLocaleDateString('sr')}</b>
+              </p>
+              <p style={{ marginTop: "20px" }}>
+                TEMA: <b>{post.theme}</b>
+              </p>
             </div>
-          </Zoom>
+          </div>
         ))}
       </div>
       <div id="post_window" ref={postWindowRef}>

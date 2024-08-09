@@ -17,7 +17,6 @@ import ig_icon from './ig.svg'
 import ps_icon from './ps_icon.svg'
 import xbox_icon from './xbox_icon.svg'
 import config from "../config.js";
-import Zoom from 'react-reveal/Zoom';
 
 const Acc = () => {
   const [userData, setUserData] = useState(null);
@@ -215,95 +214,91 @@ const Acc = () => {
         </button>
       </div>
       <div className="acc_container">
-        <Zoom>
-          <div className="data">
-            <div id="pfp" style={{ backgroundColor: userData.color }}></div>
-            <h1>{userData.name}</h1>
-            <p>
-              <img src={cal} alt="" />
-              {new Date(userData.createdAt).toLocaleDateString('sr')}
-            </p>
-            <p>Bedževi</p>
+        <div className="data">
+          <div id="pfp" style={{ backgroundColor: userData.color }}></div>
+          <h1>{userData.name}</h1>
+          <p>
+            <img src={cal} alt="" />
+            {new Date(userData.createdAt).toLocaleDateString('sr')}
+          </p>
+          <p>Bedževi</p>
+          <span>
+            <img src={check} alt="check" />
+            Uspješno napravljen nalog
+          </span>
+          {
+            userData.donator === true && (
+              <span>
+                <img src={money} alt="money" />
+                Korisnik je donator
+              </span>
+            )
+          }
+          {
+            userData.bug === true && (
+              <span>
+                <img src={bug} alt="money" />
+                Korisnik je doprinjeo aplikaciji
+              </span>
+            )
+          }
+          {
+            userData.rank === "gold" && (
+              <span id="gold_v">
+                <img src={gold} alt="gold" />
+                Korisnik ima GOLD verifikaciju
+              </span>
+            )
+          }
+          {
+            userData.rank === "diamond" && (
+              <span id="dmd_v">
+                <img src={dmd} alt="dmd" />
+                Korisnik ima DIAMOND verifikaciju
+              </span>
+            )
+          }
+          {
+            userData.rank === "default" && null
+          }
+          <button onClick={() => { setO(true) }}>Izmijeni nalog</button>
+          <button onClick={handleLogout}>Odjavi se</button>
+        </div>
+        <div className="r_data">
+          <h1>Opis</h1>
+          <p>{userData.desc}</p>
+          <hr style={{ width: "100%", border: "1px solid white" }} />
+          <p>
             <span>
-              <img src={check} alt="check" />
-              Uspješno napravljen nalog
+              <img src={dc} alt="" />
+              {userData.discord ? userData.discord : "Nije navedeno"}
             </span>
-            {
-              userData.donator === true && (
-                <span>
-                  <img src={money} alt="money" />
-                  Korisnik je donator
-                </span>
-              )
-            }
-            {
-              userData.bug === true && (
-                <span>
-                  <img src={bug} alt="money" />
-                  Korisnik je doprinjeo aplikaciji
-                </span>
-              )
-            }
-            {
-              userData.rank === "gold" && (
-                <span id="gold_v">
-                  <img src={gold} alt="gold" />
-                  Korisnik ima GOLD verifikaciju
-                </span>
-              )
-            }
-            {
-              userData.rank === "diamond" && (
-                <span id="dmd_v">
-                  <img src={dmd} alt="dmd" />
-                  Korisnik ima DIAMOND verifikaciju
-                </span>
-              )
-            }
-            {
-              userData.rank === "default" && null
-            }
-            <button onClick={() => { setO(true) }}>Izmijeni nalog</button>
-            <button onClick={handleLogout}>Odjavi se</button>
-          </div>
-        </Zoom>
-        <Zoom>
-          <div className="r_data">
-            <h1>Opis</h1>
-            <p>{userData.desc}</p>
-            <hr style={{ width: "100%", border: "1px solid white" }} />
-            <p>
-              <span>
-                <img src={dc} alt="" />
-                {userData.discord ? userData.discord : "Nije navedeno"}
-              </span>
-            </p>
-            <p>
-              <span>
-                <img src={server} alt="" />
-                {userData.discord2 ? userData.discord2 : "Nije navedeno"}
-              </span>
-            </p>
-            <p>
-              <span>
-                <img src={ig_icon} alt="" />
-                {userData.ig ? userData.ig : "Nije navedeno"}
-              </span>
-            </p>
-            <p>
-              <span>
-                <img src={ps_icon} alt="" />
-                {userData.ps ? userData.ps : "Nije navedeno"}
-              </span>
-            </p>
-            <p>
-              <span>
-                <img src={xbox_icon} alt="" />
-                {userData.xb ? userData.xb : "Nije navedeno"}
-              </span>
-            </p>
-          </div>
-        </Zoom>
+          </p>
+          <p>
+            <span>
+              <img src={server} alt="" />
+              {userData.discord2 ? userData.discord2 : "Nije navedeno"}
+            </span>
+          </p>
+          <p>
+            <span>
+              <img src={ig_icon} alt="" />
+              {userData.ig ? userData.ig : "Nije navedeno"}
+            </span>
+          </p>
+          <p>
+            <span>
+              <img src={ps_icon} alt="" />
+              {userData.ps ? userData.ps : "Nije navedeno"}
+            </span>
+          </p>
+          <p>
+            <span>
+              <img src={xbox_icon} alt="" />
+              {userData.xb ? userData.xb : "Nije navedeno"}
+            </span>
+          </p>
+        </div>
       </div>
       <Support />
       <Footer />
