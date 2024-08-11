@@ -61,13 +61,13 @@ const Forum = () => {
         setErrorMessage("");
         setT("");
         setD("");
-        console.log(data);
+        console.log("a");
         setTimeout(() => {
           window.location.reload()
         }, 1000);
       })
       .catch(error => {
-        console.error(error);
+        console.log("a");
       });
   };
 
@@ -78,7 +78,7 @@ const Forum = () => {
         setPosts(data);
       })
       .catch(error => {
-        console.error(error);
+        console.log("a");
       });
   }, []);
 

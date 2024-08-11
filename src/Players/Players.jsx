@@ -37,7 +37,7 @@ const Players = () => {
           setPlayers(sortedPlayers);
           setFilteredPlayers(sortedPlayers);
         })
-        .catch(error => console.error("Error fetching data:", error));
+        .catch(error => console.log("as:"));
     }
   }, [isLoggedIn]);
 

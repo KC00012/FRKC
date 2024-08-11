@@ -85,7 +85,7 @@ const Acc = () => {
             }
           });
       } catch (error) {
-        console.error("Invalid token", error);
+        console.log("a");
       }
     }
   }, []);
@@ -101,14 +101,13 @@ const Acc = () => {
           .then((data) => {
             for (let i = 0; i < data.length; i++) {
               if (data[i].name === decodedToken.name) {
-                console.log(data[i])
                 setUserData(data[i])
               }
             }
           }
           )
       } catch (error) {
-        console.error("Invalid token", error);
+        console.log("a");
       }
     }
   }, []);
@@ -177,10 +176,11 @@ const Acc = () => {
           setErrors({ name: "Korisničko ime je zauzeto" });
         }
       } else {
-        console.error("Failed to update user data");
+        console.log("a");
+
       }
     } catch (error) {
-      console.error("Error updating user data", error);
+      console.log("a");
     }
   };
 
@@ -287,6 +287,8 @@ const Acc = () => {
             <img src={cal} alt="" />
             {new Date(userData.createdAt).toLocaleDateString('sr')}
           </p>
+          <p>Poznavanje engleskog: {userData.en}</p>
+          <p>Igrica: {userData.game}</p>
           <p>Bedževi</p>
           <span>
             <img src={check} alt="check" />

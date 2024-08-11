@@ -23,7 +23,7 @@ const Profile = () => {
   const user = localStorage.getItem("wellplayed");
   const [udata, setuData] = useState({})
   useEffect(() => {
-    console.log(`Fetching profile for user: ${user}`);
+
     fetch(`${config.API_URL}/profil/${user}`)
       .then((response) => {
         if (!response.ok) {
@@ -35,7 +35,7 @@ const Profile = () => {
         setData(data);
         for (let i = 0; i < data.length; i++) {
           if (data[i]._id === user) {
-            console.log(data[i].name)
+
             setuData(data[i])
           }
         }
@@ -66,6 +66,8 @@ const Profile = () => {
             <img src={cal} alt="" />
             {new Date(udata.createdAt).toLocaleDateString('sr')}
           </p>
+          <p>Poznavanje engleskog: {udata.en}</p>
+          <p>Igrica: {udata.game}</p>
           <p>Bedževi</p>
           <span>
             <img src={check} alt="check" />

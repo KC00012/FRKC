@@ -31,7 +31,6 @@ const Register = () => {
   const handleNewColor = () => {
     const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
     setPfp(randomColor);
-    console.log(config.API_URL);
   };
 
   const validateFields = () => {
@@ -99,15 +98,14 @@ const Register = () => {
           return;
         }
 
-        console.log(data);
-        console.log('JWT Token:', data.token); // Log JWT token
+
         localStorage.setItem("goodgame", data.token);
         setTimeout(() => {
           window.location.href = '/nalog';
         }, 7500);
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.log("ds:");
       });
   };
 

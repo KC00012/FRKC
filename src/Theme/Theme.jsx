@@ -21,7 +21,7 @@ const Theme = () => {
             setPost(data);
          })
          .catch(error => {
-            console.error(error);
+            console.error("sc");
          });
    }, [id]);
    const highlightMentions = (text) => {
@@ -51,7 +51,7 @@ const Theme = () => {
             setNewComment(''); // Clear the input field
          })
          .catch(error => {
-            console.error(error);
+            console.error("sc");
          });
    };
    return (

@@ -3,11 +3,22 @@ import Input from "../Input/Input";
 import Header from "../Header/Header";
 import "./login.scss";
 import config from "../config";
+
 const Login = () => {
   const [name, setName] = useState("");
   const [pw, setPw] = useState("");
+  const [formError, setFormError] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   const handleLogin = async () => {
+    setFormError("");
+    setLoginError("");
+
+    if (!name || !pw) {
+      setFormError("Morate popuniti sva polja.");
+      return;
+    }
+
     try {
       const response = await fetch(`${config.API_URL}/prijava`, {
         method: "POST",
@@ -19,7 +30,8 @@ const Login = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || "An error occurred during login.");
+        setLoginError(errorData.message || "");
+        return;
       }
 
       const data = await response.json();
@@ -32,9 +44,12 @@ const Login = () => {
       );
 
       // Redirect the user or show a success message
-      alert("Login successful!");
+      setLoginError("Prijava uspješna");
+      setTimeout(() => {
+        window.location.href = '/nalog'
+      }, 1200);
     } catch (error) {
-      alert(error.message);
+      setLoginError(error.message);
     }
   };
 
@@ -43,6 +58,7 @@ const Login = () => {
       <Header />
       <div className="login_container">
         <h1>PRIJAVI SE</h1>
+
         <Input
           type="text"
           placeholder="KEYCAP ime"
@@ -58,6 +74,8 @@ const Login = () => {
         <button onClick={handleLogin} style={{ marginTop: "40px" }}>
           PRIJAVI SE
         </button>
+        {formError && <p className="error-message">{formError}</p>}
+        {loginError && <p className="error-message">{loginError}</p>}
       </div>
     </>
   );
