@@ -10,7 +10,7 @@ const Support = () => {
         u poruci navedite da je donacija i unesite KEYCAP username. Donatori
         dobijaju badge na profilu.
       </p>
-      <Button text="POŠALJI TRADE OFFER" href="https://steamcommunity.com/tradeoffer/new/?partner=1793367088&token=lte6xkoY"></Button>
+      <Button text="POŠALJI TRADE OFFER" href="https://steamcommunity.com/tradeoffer/new/?partner=1300677302&token=uxNYCPCX" target="_blank"></Button>
     </div>
   );
 };

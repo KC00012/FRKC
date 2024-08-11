@@ -59,6 +59,16 @@
 }
 
 #comments {
+   ::placeholder {
+      color: rgb(0, 0, 0);
+      opacity: 1;
+      /* Firefox */
+   }
+
+   ::-ms-input-placeholder {
+      /* Edge 12 -18 */
+      color: rgb(0, 0, 0);
+   }
 
    p,
    span {
@@ -91,6 +101,7 @@
             cursor: pointer;
             background-color: #a8c5ef;
             margin-left: 5px;
+
          }
       }
 
@@ -110,4 +121,32 @@
 .bys {
    display: flex;
    justify-content: space-between;
+}
+
+@media (max-width:1100px) {
+   .kon {
+      flex-direction: column;
+   }
+
+   #comments {
+      input {
+         width: 70% !important;
+      }
+
+      button {
+         width: 20% !important;
+      }
+   }
+}
+
+@media (max-width:600px) {
+   #comments {
+      input {
+         width: 80% !important;
+      }
+
+      button {
+         width: 15% !important;
+      }
+   }
 }

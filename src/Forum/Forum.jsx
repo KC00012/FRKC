@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useHistory
+import { useNavigate } from 'react-router-dom';
 import Header from "../Header/Header";
 import "./forum.scss";
 import Footer from "../Footer/Footer";
 import Support from "../Support/Support";
 import Button from '../button/Button';
 import { jwtDecode } from "jwt-decode";
-import user from "./user.svg"
-import cal from './cal.svg'
+import user from "./user.svg";
+import cal from './cal.svg';
 import config from '../config.js';
 
 const Forum = () => {
@@ -20,8 +20,11 @@ const Forum = () => {
   const [theme, setTheme] = useState("NEODREĐENO");
   const [posts, setPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const postWindowRef = useRef(null);
-  const navigate = useNavigate(); // Initialize useHistory
+  const navigate = useNavigate();
+
   useEffect(() => {
     const token = localStorage.getItem("goodgame");
     if (token) {
@@ -33,6 +36,11 @@ const Forum = () => {
   }, []);
 
   const hanSub = () => {
+    if (!t || !d) {
+      setErrorMessage("Molimo vas da unesete naslov i opis.");
+      return;
+    }
+
     const data = {
       title: t,
       desc: d,
@@ -49,7 +57,14 @@ const Forum = () => {
     })
       .then(res => res.json())
       .then(data => {
+        setIsSubmitted(true);
+        setErrorMessage("");
+        setT("");
+        setD("");
         console.log(data);
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
       })
       .catch(error => {
         console.error(error);
@@ -94,12 +109,12 @@ const Forum = () => {
       <div id="sorter">
         <select name="eng" id="no">
           <option value="new" onClick={() => {
-            let posts = document.querySelector(".forum_container")
-            posts.style.flexDirection = 'column-reverse'
+            let posts = document.querySelector(".forum_container");
+            posts.style.flexDirection = 'column-reverse';
           }}>NAJNOVIJE</option>
           <option value="old" onClick={() => {
-            let posts = document.querySelector(".forum_container")
-            posts.style.flexDirection = 'column'
+            let posts = document.querySelector(".forum_container");
+            posts.style.flexDirection = 'column';
           }}>NAJSTARIJE</option>
         </select>
         <button onClick={() => setOpen(true)}>OBJAVI TEMU</button>
@@ -127,24 +142,29 @@ const Forum = () => {
       <div id="post_window" ref={postWindowRef}>
         <div id="close_pw" onClick={() => setOpen(false)}>X</div>
         <h1>Objavi temu</h1>
-        <input type="text" placeholder="Naslov" value={t} onChange={(e) => setT(e.target.value)} />
-        <textarea placeholder="Tekst" value={d} onChange={(e) => setD(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Naslov"
+          value={t}
+          onChange={(e) => setT(e.target.value)}
+        />
+        <textarea
+          placeholder="Tekst"
+          value={d}
+          onChange={(e) => setD(e.target.value)}
+        />
+
         <p>TEMA:</p>
         <select name="eng" id="no" onChange={(e) => setTheme(e.target.value)}>
           <option value="OSTALO">NEODREĐENO</option>
-          <option value="
-              AMONG US
-              ">AMONG US</option>
-
+          <option value="AMONG US">AMONG US</option>
           <option value="APEX">APEX</option>
           <option value="ARK">ARK</option>
           <option value="BATTLEFIELD">BATTLEFIELD</option>
           <option value="BRAWL STARS">BRAWL STARS</option>
           <option value="COD">COD</option>
           <option value="CS2">CS2</option>
-          <option value="DEAD BY DAYLIGHT">
-            DEAD BY DAYLIGHT
-          </option>
+          <option value="DEAD BY DAYLIGHT">DEAD BY DAYLIGHT</option>
           <option value="DOTA 2">DOTA 2</option>
           <option value="FORTNITE">FORTNITE</option>
           <option value="FOREST">FOREST</option>
@@ -166,7 +186,12 @@ const Forum = () => {
           <option value="WORLD OF WARCRAFT">WORLD OF WARCRAFT</option>
           <option value="WOT">WOT</option>
         </select>
-        <button onClick={hanSub}>OBJAVI</button>
+        {!isSubmitted && (
+          <button onClick={hanSub}>OBJAVI</button>
+        )}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {isSubmitted && <p className="success-message">Tema je uspješno objavljena!</p>}
+
       </div>
       <Support />
       <Footer />

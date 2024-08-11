@@ -17,7 +17,7 @@ const Register = () => {
   const [pfp, setPfp] = useState("#fff");
   const [desc, setDesc] = useState("");
   const [errors, setErrors] = useState({});
-
+  const [c, setC] = useState(false)
   const handleNameChange = (e) => setName(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleDiscordChange = (e) => setDiscord(e.target.value);
@@ -49,9 +49,11 @@ const Register = () => {
     if (!discord && !discord2 && !ig && !ps && !xb) {
       errors.social = "Morate unijeti barem jedno polje za kontakt.";
     }
+    if (c !== true) {
+      errors.c = "Morate prihvatiti uslove.";
+    }
     return errors;
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validateFields();
@@ -60,6 +62,11 @@ const Register = () => {
       return;
     }
     setErrors({});
+
+    let ket = document.getElementById("ket");
+    let msgg = document.getElementById("msgg");
+    ket.style.display = "none";
+    msgg.style.cssText = "display:block !important;";
 
     fetch(`${config.API_URL}/registracija`, {
       method: "POST",
@@ -85,15 +92,25 @@ const Register = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        if (data.message === "Username already exists") {
+          setErrors({ name: "Korisničko ime je zauzeto" });
+          ket.style.display = "block";
+          msgg.style.display = "none";
+          return;
+        }
+
         console.log(data);
         console.log('JWT Token:', data.token); // Log JWT token
         localStorage.setItem("goodgame", data.token);
         setTimeout(() => {
-          window.location.href = '/nalog'
-        }, 1500);
+          window.location.href = '/nalog';
+        }, 7500);
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
+
 
   return (
     <>
@@ -208,6 +225,11 @@ const Register = () => {
             NOVA BOJA
           </button>
         </div>
+        <div className="bx">
+          <p>Prihvaćam <a href="/pravilaiuslovi">pravila i uslove</a> KEYCAP sajta</p>
+          <input type="checkbox" onChange={(e) => setC(e.target.checked)}
+          />
+        </div>
         {Object.keys(errors).length > 0 && (
           <p className="error">
             {Object.values(errors).map((error, index) => (
@@ -215,9 +237,10 @@ const Register = () => {
             ))}
           </p>
         )}
-        <button style={{ marginTop: "40px" }} onClick={handleSubmit}>
+        <button style={{ marginTop: "40px" }} onClick={handleSubmit} id="ket">
           NAPRAVI NALOG
         </button>
+        <p id="msgg" style={{ display: "none", textAlign: "center" }}>Prijava uspješna, pričakajte par trenutaka da Vas prebacimo na glavnu stranicu</p>
       </div>
     </>
   );

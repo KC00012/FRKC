@@ -15,7 +15,7 @@ const Header = () => {
       body[0].style.cssText = 'overflow:hidden !important;'
       resl.style.display = "flex";
     } else {
-      body[0].style.cssText = 'overflow:scroll !important;'
+      body[0].style.cssText = 'overflow:auto !important;'
 
       resl.style.display = "none";
     }

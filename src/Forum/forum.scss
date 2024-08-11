@@ -24,11 +24,8 @@
 #post_window {
    width: 100%;
    height: 100%;
-   background: rgba(255, 255, 255, 0.49);
-   border-radius: 16px;
-   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-   backdrop-filter: blur(16.7px);
-   -webkit-backdrop-filter: blur(16.7px);
+   background: rgb(28, 176, 185);
+   background: linear-gradient(0deg, rgb(28, 176, 185) 0%, rgb(120, 139, 240) 100%);
    position: fixed;
    top: 50%;
    left: 50%;
@@ -43,6 +40,7 @@
    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
    z-index: 99999;
    display: none;
+   color: white !important;
 
    #close_pw {
       cursor: pointer;
@@ -51,12 +49,9 @@
       right: 10px;
       width: 80px;
       height: 80px;
-      background: rgb(28, 176, 185);
-      background: -moz-linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
-      background: -webkit-linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
-      background: linear-gradient(0deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1cb0b9", endColorstr="#788bf0", GradientType=1);
-      color: white;
+      background: rgb(255, 255, 255);
+
+      color: black;
       font-size: 1.3rem;
       display: flex;
       align-items: center;
@@ -84,11 +79,7 @@
    }
 
    button {
-      background: rgb(28, 176, 185);
-      background: -moz-linear-gradient(90deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
-      background: -webkit-linear-gradient(90deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
-      background: linear-gradient(90deg, rgba(28, 176, 185, 1) 0%, rgba(120, 139, 240, 1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1cb0b9", endColorstr="#788bf0", GradientType=1);
+      background: rgb(255, 255, 255);
       color: rgb(0, 0, 0);
       cursor: pointer;
    }
@@ -205,5 +196,17 @@
    img {
       width: 40px;
       height: 40px;
+   }
+}
+
+@media (max-width:1200px) {
+   #post_window {
+
+      input,
+      textarea,
+      button,
+      select {
+         width: 90%;
+      }
    }
 }

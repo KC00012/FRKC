@@ -11,6 +11,7 @@ import Button from "../button/Button";
 import Support from "../Support/Support";
 import Footer from "../Footer/Footer";
 import { jwtDecode } from "jwt-decode";
+import Dc from "../Dc/Dc";
 function App() {
   const token = localStorage.getItem("goodgame");
   const isLoggedIn = token && jwtDecode(token).isLoggedIn;
@@ -140,7 +141,7 @@ function App() {
                 <li>Badge na profilu</li>
                 <li>Prikaz iznad korisnika bez ranka</li>
               </ul>
-              <Button text="0.5€ trade offer" href="https://steamcommunity.com/tradeoffer/new/?partner=1793367088&token=lte6xkoY"></Button>
+              <Button text="0.5€ trade offer" href="https://steamcommunity.com/tradeoffer/new/?partner=1300677302&token=uxNYCPCX" target="_blank"></Button>
               <p>Ako trade offer pređe 0.5€ dobijate i donator badge (do 1€)</p>
               <p>VAŽNO! ako trade offer bude više od 1€ morate navesti da želite da trade offer bude prihvaćen, u suprotnom trade offer će biti odbijen.</p>
             </div>
@@ -157,7 +158,7 @@ function App() {
                 <li>Badge na profilu</li>
                 <li>Prikaz na vrhu pretrage</li>
               </ul>
-              <Button text="2€ trade offer" href="https://steamcommunity.com/tradeoffer/new/?partner=1793367088&token=lte6xkoY"></Button>
+              <Button text="2€ trade offer" href="https://steamcommunity.com/tradeoffer/new/?partner=1300677302&token=uxNYCPCX" target="_blank"></Button>
               <p>Ako trade offer pređe 2€ dobijate i donator badge (do 3€)</p>
               <p>VAŽNO! ako trade offer bude više od 3€ morate navesti da želite da trade offer bude prihvaćen, u suprotnom trade offer će biti odbijen.</p>
             </div>
@@ -191,6 +192,7 @@ function App() {
           </div>
           <img src={rocket} alt="rocket" />
         </div>
+        <Dc></Dc>
         <Support></Support>
         <Footer></Footer>
       </div>

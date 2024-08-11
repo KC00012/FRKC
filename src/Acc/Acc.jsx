@@ -17,15 +17,15 @@ import ig_icon from './ig.svg'
 import ps_icon from './ps_icon.svg'
 import xbox_icon from './xbox_icon.svg'
 import config from "../config.js";
-
+// import jwt from 'jsonwebtoken'
 const Acc = () => {
   const [userData, setUserData] = useState(null);
   const [o, setO] = useState(false)
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [eng, setEng] = useState("Ne");
-  const [s, setS] = useState("Ne");
-
+  const [s, setS] = useState("NEODREĐENO");
+  const [color, setColor] = useState("#fff")
   const [discord, setDiscord] = useState("");
   const [discord2, setDiscord2] = useState("");
   const [ig, setIg] = useState("");
@@ -33,6 +33,7 @@ const Acc = () => {
   const [xb, setXb] = useState("");
   const [pfp, setPfp] = useState("#fff");
   const [desc, setDesc] = useState("");
+  const [errors, setErrors] = useState({})
   const handleNameChange = (e) => setName(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleDiscordChange = (e) => setDiscord(e.target.value);
@@ -64,6 +65,37 @@ const Acc = () => {
       try {
         const decodedToken = jwtDecode(token);
         setUserData(decodedToken);
+        fetch(`${config.API_URL}/nalog`)
+          .then((response) => response.json())
+          .then((data) => {
+            for (let i = 0; i < data.length; i++) {
+              if (data[i].name === decodedToken.name) {
+                setUserData(data[i]);
+                setName(data[i].name);
+                setDesc(data[i].desc || "");
+                setEng(data[i].en || "Ne");
+                setS(data[i].game || "NEODREĐENO");
+                setDiscord(data[i].discord || "");
+                setDiscord2(data[i].discord2 || "");
+                setIg(data[i].ig || "");
+                setPs(data[i].ps || "");
+                setXb(data[i].xb || ""); // Initialize state with userData.xb
+                setPfp(data[i].color || "#fff");
+              }
+            }
+          });
+      } catch (error) {
+        console.error("Invalid token", error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("goodgame");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        setUserData(decodedToken);
         fetch(`${config.API_URL}/nalog`).then(
           (response) => response.json())
           .then((data) => {
@@ -87,6 +119,71 @@ const Acc = () => {
       window.location.href = '/'
     }, 1200);
   };
+  const handleSubmit = async () => {
+    const validationErrors = {};
+    if (!name) validationErrors.name = "Ime je obavezno.";
+    if (!desc) validationErrors.desc = "Opis je obavezan.";
+    if (!eng) validationErrors.eng = "Poznavanje engleskog je obavezno.";
+    if (!s) validationErrors.s = "Morate odabrati igricu koju igrate.";
+    if (!discord && !discord2 && !ig && !ps && !xb) {
+      validationErrors.contact = "Morate unijeti barem jedno polje za kontakt.";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    // Continue with the submission if no errors
+    const updatedData = {
+      name,
+      desc,
+      eng,
+      game: s,
+      discord,
+      discord2,
+      ig,
+      ps,
+      xb,
+      color: pfp,
+    };
+
+    try {
+      const response = await fetch(`${config.API_URL}/nalog/${userData._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (response.ok) {
+        const updatedUser = await response.json();
+        setUserData(updatedUser);
+
+        // Generate a new JWT and store it in localStorage
+        // const payload = {
+        //   name: updatedUser.name,
+        //   isLoggedIn: true
+        // };
+        // const newToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '60d' });
+        localStorage.setItem("goodgame", updatedUser.token);
+
+        // Reload the page to reflect the changes
+        window.location.reload();
+      } else if (response.status === 400) {
+        const data = await response.json();
+        if (data.message === "Username already exists") {
+          setErrors({ name: "Korisničko ime je zauzeto" });
+        }
+      } else {
+        console.error("Failed to update user data");
+      }
+    } catch (error) {
+      console.error("Error updating user data", error);
+    }
+  };
+
 
   if (!userData) {
     return <div>Loading...</div>; // or a loading spinner
@@ -101,105 +198,74 @@ const Acc = () => {
         <Input
           type="text"
           placeholder="KEYCAP ime"
-          value={userData.name}
+          value={name}
           onChange={handleNameChange}
         />
+        {errors.name && <p className="error">{errors.name}</p>} {/* Display name error */}
 
         <textarea
-          name=""
           id="desc"
           placeholder="Opiši sebe, koje igre igraš i slično"
-          value={userData.desc}
-          onChange={(e) => {
-            setDesc(e.target.value);
-          }}
-        ></textarea>
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+        />
+        {errors.desc && <p className="error">{errors.desc}</p>} {/* Display description error */}
+
         <div className="form_wrapper">
           <form>
             <label htmlFor="eng">Poznavanje engleskog</label>
-            <select name="eng" id="eng" value={userData.en} onChange={handleEngChange}>
+            <select name="eng" id="eng" value={eng} onChange={handleEngChange}>
               <option value="Ne">Ne</option>
               <option value="Srednje">Srednje</option>
               <option value="Tečno">Tečno</option>
             </select>
-
+            {errors.eng && <p className="error">{errors.eng}</p>} {/* Display English proficiency error */}
           </form>
           <form>
             <label htmlFor="sr">Igrica koju igram</label>
-            <select name="" id="" value={userData.game} onChange={handleSchange}>
-              <option value="OSTALO">NEODREĐENO</option>
-              <option value="
-              AMONG US
-              ">AMONG US</option>
-
-              <option value="APEX">APEX</option>
-              <option value="ARK">ARK</option>
-              <option value="BATTLEFIELD">BATTLEFIELD</option>
-              <option value="BRAWL STARS">BRAWL STARS</option>
-              <option value="COD">COD</option>
-              <option value="CS2">CS2</option>
-              <option value="DEAD BY DAYLIGHT">
-                DEAD BY DAYLIGHT
-              </option>
-              <option value="DOTA 2">DOTA 2</option>
-              <option value="FORTNITE">FORTNITE</option>
-              <option value="FOREST">FOREST</option>
-              <option value="GTA">GTA</option>
-              <option value="LOL">LOL</option>
-              <option value="LOST ARK">LOST ARK</option>
-              <option value="MINECRAFT">MINECRAFT</option>
-              <option value="OVERWATCH">OVERWATCH</option>
-              <option value="PHASMOPHOBIA">PHASMOPHOBIA</option>
-              <option value="PUBG">PUBG</option>
-              <option value="R6">R6</option>
-              <option value="ROBLOX">ROBLOX</option>
-              <option value="ROCKET LEAGUE">ROCKET LEAGUE</option>
-              <option value="RUST">RUST</option>
-              <option value="TEAM FORTRESS">TEAM FORTRESS</option>
-              <option value="TERRARIA">TERRARIA</option>
-              <option value="UNTURNED">UNTURNED</option>
-              <option value="VALORANT">VALORANT</option>
-              <option value="WORLD OF WARCRAFT">WORLD OF WARCRAFT</option>
-              <option value="WOT">WOT</option>
+            <select name="sr" id="sr" value={s} onChange={handleSchange}>
+              <option value="NEODREĐENO">NEODREĐENO</option>
+              {/* Add all other options here */}
             </select>
+            {errors.s && <p className="error">{errors.s}</p>} {/* Display game error */}
           </form>
         </div>
-        <p>
-          Gdje Vas mogu kontaktirati saigrači, <br /> morate da unesete barem
-          jedno polje
-        </p>
+
+        <p>Gdje Vas mogu kontaktirati saigrači, <br /> morate da unesete barem jedno polje</p>
         <Input
           type="text"
           placeholder="@Discord"
-          value={userData.discord}
+          value={discord}
           onChange={handleDiscordChange}
         />
         <Input
           type="text"
           placeholder="Discord server (link)"
-          value={userData.discord2}
+          value={discord2}
           onChange={handleDiscord2Change}
         />
         <Input
           type="text"
           placeholder="@Instagram"
-          value={userData.ig}
+          value={ig}
           onChange={handleIgChange}
         />
         <Input
           type="text"
           placeholder="@PSN"
-          value={userData.ps}
+          value={ps}
           onChange={handlePsChange}
         />
         <Input
           type="text"
           placeholder="@XBOX"
-          value={userData.xbox}
+          value={xb}
           onChange={handleXbChange}
         />
+        {errors.contact && <p className="error">{errors.contact}</p>} {/* Display contact error */}
+
         <div className="profile_pic">
-          <div id="pfp" style={{ backgroundColor: userData.color }}></div>
+          <div id="pfp" style={{ backgroundColor: pfp }}></div>
           <p>
             Kako bi aplikacija ostala brza mi moramo da štedimo resurse, iz tog
             razloga ne možete da stavite profilnu sliku, ali zato možete da
@@ -209,7 +275,7 @@ const Acc = () => {
             NOVA BOJA
           </button>
         </div>
-        <button style={{ marginTop: "40px" }} >
+        <button style={{ marginTop: "40px" }} onClick={handleSubmit}>
           IZMIJENI NALOG
         </button>
       </div>

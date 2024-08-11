@@ -413,6 +413,14 @@
 }
 
 @media (max-width:1150px) {
+   .button_flex {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 !important;
+      justify-content: center;
+   }
+
    .games_container {
       .games {
          flex-direction: column !important;
