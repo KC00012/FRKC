@@ -85,7 +85,7 @@ const Profile = () => {
             udata.bug === true && (
               <span>
                 <img src={bug} alt="money" />
-                Korisnik je doprinjeo aplikaciji
+                Korisnik je doprinio aplikaciji
               </span>
             )
           }

@@ -224,7 +224,7 @@ const Register = () => {
           </button>
         </div>
         <div className="bx">
-          <p>Prihvaćam <a href="/pravilaiuslovi">pravila i uslove</a> KEYCAP sajta</p>
+          <p>Prihvaćam <a href="/pravilaiuslovi" target="_blank">pravila i uslove</a> KEYCAP sajta</p>
           <input type="checkbox" onChange={(e) => setC(e.target.checked)}
           />
         </div>

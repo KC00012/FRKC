@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams
+import { useParams } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Support from '../Support/Support';
-import user from './user.svg';
-import cal from './cal.svg';
+import userIcon from './user.svg';
+import calIcon from './cal.svg';
 import './theme.scss';
-import { jwtDecode } from "jwt-decode"; // Adjusted the import as jwtDecode is usually a default export
+import { jwtDecode } from 'jwt-decode'; // Corrected import
 import config from '../config.js';
+
 const Theme = () => {
    const token = localStorage.getItem("goodgame");
    const isLoggedIn = token && jwtDecode(token).name;
-   const { id } = useParams(); // Get the post ID from the URL
+   const { id } = useParams();
    const [post, setPost] = useState(null);
    const [newComment, setNewComment] = useState('');
+
    useEffect(() => {
       fetch(`${config.API_URL}/forum/${id}`)
          .then(res => res.json())
@@ -24,36 +26,47 @@ const Theme = () => {
             console.error("sc");
          });
    }, [id]);
+
    const highlightMentions = (text) => {
-      const parts = text.split(/(\s+)/).map((part) => {
+      return text.split(/(\s+)/).map((part, index) => {
          if (part.startsWith('@')) {
-            return `<span style="color: black; font-weight: bold;">${part}</span>`;
+            return (
+               <span key={index} style={{ color: 'black', fontWeight: 'bold' }}>
+                  {part}
+               </span>
+            );
          }
          return part;
       });
-      return parts.join('');
    };
 
-   if (!post) {
-      return <p>Loading...</p>;
-   }
    const handleAddComment = () => {
+      // Prevent empty or whitespace-only comments
+      if (!newComment.trim()) {
+         return;
+      }
+
       fetch(`${config.API_URL}/forum/${id}/comments`, {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
          },
-         body: JSON.stringify({ text: newComment, by: isLoggedIn }), // Replace with actual user info
+         body: JSON.stringify({ text: newComment, by: isLoggedIn }),
       })
          .then(res => res.json())
          .then(data => {
-            setPost(data); // Update post with the new comment
-            setNewComment(''); // Clear the input field
+            setPost(data);
+            setNewComment('');
          })
          .catch(error => {
             console.error("sc");
          });
    };
+
+   if (!post) {
+      return <p>Loading...</p>;
+   }
+
    return (
       <>
          <Header />
@@ -62,10 +75,10 @@ const Theme = () => {
             <p id='theme_text'>{post.desc}</p>
             <div className="kon">
                <p style={{ marginTop: "20px" }}>
-                  <img src={user} alt="Objavio:" /><b>{post.by}</b>
+                  <img src={userIcon} alt="Objavio:" /><b>{post.by}</b>
                </p>
                <p style={{ marginTop: "20px" }}>
-                  <img src={cal} alt="Objavljeno:" /><b>{new Date(post.createdAt).toLocaleDateString('sr')}</b>
+                  <img src={calIcon} alt="Objavljeno:" /><b>{new Date(post.createdAt).toLocaleDateString('sr')}</b>
                </p>
                <p style={{ marginTop: "20px" }}>
                   TEMA: <b>{post.theme}</b>
@@ -84,7 +97,9 @@ const Theme = () => {
             </div>
             {post.comments.map((comment, index) => (
                <div key={index}>
-                  <p dangerouslySetInnerHTML={{ __html: highlightMentions(comment.text) }} style={{ width: "95%", margin: "20px auto" }}></p>
+                  <p style={{ width: "95%", margin: "20px auto" }}>
+                     {highlightMentions(comment.text)}
+                  </p>
                   <div className="bys">
                      <span>{comment.by}</span>
                      <span>{new Date(comment.date).toLocaleDateString('sr')}</span>
@@ -97,7 +112,6 @@ const Theme = () => {
          <Footer />
       </>
    );
-
 };
 
 export default Theme;

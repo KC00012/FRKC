@@ -41,7 +41,7 @@ const Terms = () => {
         <p>KEYCAP ne garantuje neprekidnu dostupnost ili funkcionalnost sajta.
           Ne snosimo odgovornost za bilo kakve direktne ili indirektne štete koje mogu nastati korišćenjem sajta.</p>
         <h2>8. Kontakt</h2>
-        <p>Za sva pitanja ili nedoumice, kontaktirajte nas putem email-a na keycapsupport@gmail.com.</p>
+        <p>Za sva pitanja ili nedoumice, kontaktirajte nas putem email-a na keycapsup@gmail.com.</p>
       </div>
       <Footer></Footer>
     </>

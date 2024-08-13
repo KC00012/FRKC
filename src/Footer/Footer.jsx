@@ -11,10 +11,10 @@ const Footer = () => {
         <h1 className="logo" onClick={() => { window.location.href = '/' }}>KEYCAP</h1>
         <nav>
           <Link to="/">POČETNA</Link>
-          <Link to="/">SAIGRAČI</Link>
+          <Link to="/saigraci">SAIGRAČI</Link>
           <Link to="/forum">FORUM</Link>
           <Link to="/podrska">PODRŠKA</Link>
-          <Link to="/">PRAVILA I USLOVI</Link>
+          <Link to="/pravilaiuslovi">PRAVILA I USLOVI</Link>
           {isLoggedIn ? (
             <Link to="/nalog">NALOG</Link>
           ) : (

@@ -225,6 +225,34 @@ const Acc = () => {
             <label htmlFor="sr">Igrica koju igram</label>
             <select name="sr" id="sr" value={s} onChange={handleSchange}>
               <option value="NEODREĐENO">NEODREĐENO</option>
+              <option value="AMONG US">AMONG US</option>
+              <option value="APEX">APEX</option>
+              <option value="ARK">ARK</option>
+              <option value="BATTLEFIELD">BATTLEFIELD</option>
+              <option value="BRAWL STARS">BRAWL STARS</option>
+              <option value="COD">COD</option>
+              <option value="CS2">CS2</option>
+              <option value="DEAD BY DAYLIGHT">DEAD BY DAYLIGHT</option>
+              <option value="DOTA 2">DOTA 2</option>
+              <option value="FORTNITE">FORTNITE</option>
+              <option value="FOREST">FOREST</option>
+              <option value="GTA">GTA</option>
+              <option value="LOL">LOL</option>
+              <option value="LOST ARK">LOST ARK</option>
+              <option value="MINECRAFT">MINECRAFT</option>
+              <option value="OVERWATCH">OVERWATCH</option>
+              <option value="PHASMOPHOBIA">PHASMOPHOBIA</option>
+              <option value="PUBG">PUBG</option>
+              <option value="R6">R6</option>
+              <option value="ROBLOX">ROBLOX</option>
+              <option value="ROCKET LEAGUE">ROCKET LEAGUE</option>
+              <option value="RUST">RUST</option>
+              <option value="TEAM FORTRESS">TEAM FORTRESS</option>
+              <option value="TERRARIA">TERRARIA</option>
+              <option value="UNTURNED">UNTURNED</option>
+              <option value="VALORANT">VALORANT</option>
+              <option value="WORLD OF WARCRAFT">WORLD OF WARCRAFT</option>
+              <option value="WOT">WOT</option>
               {/* Add all other options here */}
             </select>
             {errors.s && <p className="error">{errors.s}</p>} {/* Display game error */}
@@ -306,7 +334,7 @@ const Acc = () => {
             userData.bug === true && (
               <span>
                 <img src={bug} alt="money" />
-                Korisnik je doprinjeo aplikaciji
+                Korisnik je doprinio aplikaciji
               </span>
             )
           }
